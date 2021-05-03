@@ -1,0 +1,17 @@
+.data {
+   margin-left: 30px;
+   grid-column: span 5;
+   grid-row: span 1;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #000;
+}
+
+.name {
+   font-size: 40px;
+   margin-bottom: 30px;
+}
+
+.data__item {
+   font-size: 25px;
+   margin-bottom: 5px;
+}

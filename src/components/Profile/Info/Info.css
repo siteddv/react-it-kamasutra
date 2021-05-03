@@ -1,9 +1,0 @@
-.profile {
-   grid-column: span 5;
-   grid-row: span 14;
-   width: 100%;
-   display: grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: repeat(4, 1fr);
-   grid-gap: 10px;
-}
