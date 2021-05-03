@@ -1,0 +1,13 @@
+.CoverPhoto {
+   grid-column: span 1;
+   grid-row: span 1;
+
+   background: url("../assets/img/cover.jpg") no-repeat center;
+   width: 100%;
+   background-size: cover;
+   -webkit-background-size: cover;
+}
+
+/* .CoverPhoto img {
+   width: 200px;
+} */

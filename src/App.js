@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from "./components/Header"
+import Header from "./components/Header";
 import Navbar from './components/Navbar';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <div className="app-wrapper">
           <Header />
           <Navbar />
+          <Profile />
         </div>
       </div>
     </div>
