@@ -1,0 +1,22 @@
+.nav {
+   grid-column: span 1;
+   grid-row: span 14;
+   background-color: #14cd68;
+   padding: 20px;
+}
+
+.item a {
+   color: white;
+   text-decoration: none;
+   cursor: pointer;
+   transition: color 0.2s linear, border 0.2s linear;
+}
+
+.item a:hover {
+   color: #ffd900;
+   border-bottom: 1px solid #ffd900;
+}
+
+.item:last-child {
+   margin-top: 10px;
+}

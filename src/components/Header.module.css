@@ -1,0 +1,9 @@
+.header {
+   grid-column: span 6;
+   grid-row: span 1;
+   background-color: #14cd68;
+}
+
+.header img {
+   width: 50px;
+}
