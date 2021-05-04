@@ -6,12 +6,14 @@ import NewPost from './NewPost/NewPost';
 import Feed from './Feed/Feed';
 
 const Profile = () => {
-   return <div className={style.profile}>
-      <CoverPhoto />
-      <Info />
-      <NewPost />
-      <Feed />
-   </div>
+   return (
+      <div className={style.profile}>
+         <CoverPhoto />
+         <Info />
+         <NewPost />
+         <Feed />
+      </div>
+   );
 }
 
 export default Profile;

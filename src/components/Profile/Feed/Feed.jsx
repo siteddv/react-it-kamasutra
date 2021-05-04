@@ -7,7 +7,8 @@ const Feed = () => {
       <div className={style.feed}>
          <Post content="Hey!" />
          <Post content="Hi!" />
-      </div>)
+      </div>
+   );
 }
 
 export default Feed;

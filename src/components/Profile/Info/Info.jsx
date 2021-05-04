@@ -4,10 +4,12 @@ import Avatar from './Avatar/Avatar';
 import Data from './Data/Data';
 
 const Info = () => {
-   return <div className={style.info}>
-      <Avatar />
-      <Data />
-   </div>
+   return (
+      <div className={style.info}>
+         <Avatar />
+         <Data />
+      </div>
+   );
 }
 
 export default Info;

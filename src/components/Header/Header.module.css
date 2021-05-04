@@ -2,9 +2,21 @@
    grid-column: span 6;
    grid-row: span 1;
    background-color: #14cd68;
+   display: grid;
+   grid-template-columns: repeat(10, 1fr);
+   grid-template-rows: 1fr;
+   grid-gap: 10px;
 }
 
-.header img {
+.img {
+   margin-left: 20px;
+   grid-column: span 1;
+   grid-row: span 1;
+   background: url("../../assets/img/Logo.png") no-repeat center;
+   background-size: cover;
+   -webkit-background-size: cover;
    padding: 10px;
-   width: 50px;
+   width: 30px;
+   height: auto;
+   cursor: pointer;
 }
