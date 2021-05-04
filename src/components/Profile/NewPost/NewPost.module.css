@@ -18,6 +18,7 @@
 }
 
 .textarea {
+   width: 98%;
    background-color: #eee;
    outline: 0;
    border: 1px solid #ccc;
@@ -27,14 +28,16 @@
    transition: background-color 0.2s linear, border 0.2s linear;
 }
 
-.textarea:hover {
-   background-color: #fff;
+.textarea:hover,
+.textarea:active,
+.textarea:focus {
+   background-color: rgb(241, 241, 241);
    border: 1px solid #aaa;
 }
 
 .send__button {
    position: absolute;
-   right: 60px;
+   right: 20px;
    bottom: 0;
 
    width: 10%;
