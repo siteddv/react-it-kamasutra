@@ -1,0 +1,9 @@
+.messages {
+   grid-column: span 2;
+   grid-row: span 1;
+   width: 100%;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(10, 1fr);
+   grid-gap: 10px;
+}
