@@ -9,10 +9,11 @@ const Feed = () => {
       { content: "Hi!" },
    ];
 
+   let postElements = postsData.map(post => <Post content={post.content} />);
+
    return (
       <div className={style.feed}>
-         <Post content={postsData[0].content} />
-         <Post content={postsData[1].content} />
+         {postElements}
       </div>
    );
 }

@@ -9,10 +9,11 @@ const Messages = () => {
       { text: "Bravo!", date: new Date().toDateString() },
    ];
 
+   let messageElements = messagesData.map(message => <MessageItem text={message.text} date={message.date} />)
+
    return (
       <div className={style.messages}>
-         <MessageItem text={messagesData[0].text} date={messagesData[0].date} />
-         <MessageItem text={messagesData[1].text} date={messagesData[1].date} />
+         {messageElements}
       </div>
    );
 }
