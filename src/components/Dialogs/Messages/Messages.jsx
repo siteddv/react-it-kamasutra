@@ -3,10 +3,16 @@ import style from './Messages.module.css';
 import MessageItem from './MessageItem/MessageItem';
 
 const Messages = () => {
+
+   let messagesData = [
+      { text: "Hey!", date: new Date().toDateString() },
+      { text: "Bravo!", date: new Date().toDateString() },
+   ];
+
    return (
       <div className={style.messages}>
-         <MessageItem text="Hey!" date="unknown" />
-         <MessageItem text="Bravo!" date="unknown2" />
+         <MessageItem text={messagesData[0].text} date={messagesData[0].date} />
+         <MessageItem text={messagesData[1].text} date={messagesData[1].date} />
       </div>
    );
 }
