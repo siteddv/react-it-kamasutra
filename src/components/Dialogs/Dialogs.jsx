@@ -3,12 +3,14 @@ import Companions from './Companions/Companions';
 import style from './Dialogs.module.css';
 import Messages from './Messages/Messages';
 
-const Dialogs = () => {
+const Dialogs = (props) => {
+
    return (
+
       <div className={style.dialogs}>
-         <Companions />
-         <Messages />
-      </div>
+         <Companions dialogsData={props.dialogsData} />
+         <Messages dialogsData={props.dialogsData} />
+      </div >
    );
 }
 

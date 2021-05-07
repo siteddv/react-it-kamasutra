@@ -1,17 +1,22 @@
 import React from 'react';
+import { BrowserRouter, Route } from "react-router-dom";
 import style from './Messages.module.css';
 import MessageItem from './MessageItem/MessageItem';
 
-const Messages = () => {
+const Messages = (props) => {
 
-   let messagesData = [
-      { text: "Hey!", date: new Date().toDateString() },
-      { text: "Bravo!", date: new Date().toDateString() },
-   ];
 
-   let messageElements = messagesData.map(message => <MessageItem text={message.text} date={message.date} />)
+   let messageElements = props.dialogsData.map(dialog =>
+      <Route path={"/messages/" + dialog.companionName.toLowerCase()}
+         render={() =>
+            dialog.messagesData.map(message =>
+               <MessageItem text={message.messageText} date={message.dateOfChanging} />)
+         }
+      />
+   );
 
    return (
+
       <div className={style.messages}>
          {messageElements}
       </div>

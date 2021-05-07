@@ -5,13 +5,13 @@ import Info from './Info/Info';
 import NewPost from './NewPost/NewPost';
 import Feed from './Feed/Feed';
 
-const Profile = () => {
+const Profile = (props) => {
    return (
       <div className={style.profile}>
          <CoverPhoto />
          <Info />
          <NewPost />
-         <Feed />
+         <Feed postsData={props.postsData} />
       </div>
    );
 }

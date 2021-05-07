@@ -1,19 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import CompanionItem from './CompanionItem/CompanionItem';
 import style from './Companions.module.css';
 
-const Companions = () => {
+const Companions = (props) => {
 
-   let companionsData = [
-      { name: "Dimitrii" },
-      { name: "Kanykei" },
-      { name: "Meerim" },
-   ];
-
-   const startOfTheRoute = "/dialogs/dimitrii";
-
-   let companionElements = companionsData.map(companion => <NavLink to={startOfTheRoute + companion.name} activeClassName={style.active}><CompanionItem name={companion.name} /></NavLink>)
+   let companionElements = props.dialogsData.map(dialog =>
+      <NavLink to={"/messages/" + dialog.companionName.toLowerCase()} activeClassName={style.active} >
+         <CompanionItem name={dialog.companionName} />
+      </NavLink>
+   );
 
    return (
       <div className={style.companions}>
