@@ -1,8 +1,12 @@
+let rerenderEntireTree = () => {
+   console.log("rendr");
+}
+
 let state = {
    profilePage: {
+      newPostText: "",
       postsData: [
          { content: "Hey!" },
-         { content: "Hi!" },
       ],
    },
    messagesPage: {
@@ -31,5 +35,24 @@ let state = {
       ],
    },
 };
+
+export const addPost = () => {
+   let newPost = {
+      content: state.profilePage.newPostText,
+   };
+   state.profilePage.postsData.push(newPost);
+   state.profilePage.newPostText = "";
+   rerenderEntireTree(state);
+};
+
+export const updateNewPostText = (postText) => {
+   console.log(postText);
+   state.profilePage.newPostText = postText;
+   rerenderEntireTree(state);
+};
+
+export const observe = (observer) => {
+   rerenderEntireTree = observer;
+}
 
 export default state;

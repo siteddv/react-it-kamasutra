@@ -23,7 +23,9 @@ function App(props) {
             <Route path="/profile"
               render={
                 () => <Profile
-                  postsData={props.appState.profilePage.postsData}
+                  profilePage={props.appState.profilePage}
+                  addPost={props.addPost}
+                  updateNewPostText={props.updateNewPostText}
                 />
               }
             />
