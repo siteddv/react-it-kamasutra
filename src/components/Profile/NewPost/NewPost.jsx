@@ -32,7 +32,8 @@ const NewPost = (props) => {
 
          <button
             className={style.send__button}
-            onClick={addPost}>Send</button>
+            onClick={addPost}>Send
+         </button>
       </div>
    );
 }

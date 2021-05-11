@@ -6,4 +6,5 @@
    grid-template-columns: 1fr;
    grid-template-rows: repeat(10, 1fr);
    grid-gap: 10px;
+   position: relative;
 }

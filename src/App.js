@@ -16,7 +16,8 @@ function App(props) {
             <Route path="/messages"
               render={
                 () => <Dialogs
-                  dialogsData={props.store.getState().messagesPage.dialogsData}
+                  messagesPage={props.store.getState().messagesPage}
+                  dispatch={props.store.dispatch.bind(props.store)}
                 />
               }
             />
