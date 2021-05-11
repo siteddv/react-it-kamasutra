@@ -6,7 +6,6 @@ import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 
 function App(props) {
-  debugger;
   return (
     <BrowserRouter>
       <div className="App">
@@ -25,8 +24,7 @@ function App(props) {
               render={
                 () => <Profile
                   profilePage={props.store.getState().profilePage}
-                  addPost={props.store.addPost.bind(props.store)}
-                  updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                  dispatch={props.store.dispatch.bind(props.store)}
                 />
               }
             />
