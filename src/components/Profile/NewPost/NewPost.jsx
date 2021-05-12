@@ -1,18 +1,17 @@
 import React from 'react';
 import style from './NewPost.module.css';
-import { addPostActionCreator, updateNewPostTextActionCreator } from './../../../redux/profile-reducer';
 
 let newPostElement = React.createRef();
 
 const NewPost = (props) => {
 
    let addPost = () => {
-      props.dispatch(addPostActionCreator());
+      props.addingPostMethods.addPost();
    }
 
-   const onNewPostTextUpdate = () => {
+   const updateNewPostText = () => {
       const text = newPostElement.current.value;
-      props.dispatch(updateNewPostTextActionCreator(text));
+      props.addingPostMethods.updateNewPostText(text);
    }
 
 
@@ -27,7 +26,7 @@ const NewPost = (props) => {
             placeholder="What's new?"
             ref={newPostElement}
             value={props.newPostText}
-            onChange={onNewPostTextUpdate}
+            onChange={updateNewPostText}
          />
 
          <button

@@ -3,7 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 function App(props) {
   return (
@@ -14,20 +15,10 @@ function App(props) {
             <Header />
             <Navbar />
             <Route path="/messages"
-              render={
-                () => <Dialogs
-                  messagesPage={props.store.getState().messagesPage}
-                  dispatch={props.store.dispatch.bind(props.store)}
-                />
-              }
+              render={() => <DialogsContainer store={props.store} />}
             />
             <Route path="/profile"
-              render={
-                () => <Profile
-                  profilePage={props.store.getState().profilePage}
-                  dispatch={props.store.dispatch.bind(props.store)}
-                />
-              }
+              render={() => <ProfileContainer store={props.store} />}
             />
           </div>
         </div>

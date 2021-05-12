@@ -1,15 +1,14 @@
 import React from 'react';
 import style from './SendMessageArea.module.css';
-import { updateNewMessageTextActionCreator, addMessageActionCreator } from '../../../../redux/dialogs-reducer';
 
 const SendMessageArea = (props) => {
-   const onMessageTextUpdate = (e) => {
+   const messageTextUpdate = (e) => {
       const text = e.target.value;
-      props.dispatch(updateNewMessageTextActionCreator(text));
+      props.sendingMessageMethods.messageTextUpdate(text);
    }
 
-   const addPost = () => {
-      props.dispatch(addMessageActionCreator());
+   const sendMessage = () => {
+      props.sendingMessageMethods.sendMessage();
    }
 
    return (
@@ -17,12 +16,12 @@ const SendMessageArea = (props) => {
          <textarea
             className={style.textarea}
             placeholder="Write something..."
-            value={props.messagesPage.newMessageText}
-            onChange={onMessageTextUpdate}
+            value={props.newMessageText}
+            onChange={messageTextUpdate}
          />
          <button
             className={style.send__button}
-            onClick={addPost}>Send
+            onClick={sendMessage}>Send
          </button>
       </div>
    );
