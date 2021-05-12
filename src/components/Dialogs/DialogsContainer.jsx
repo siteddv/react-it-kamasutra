@@ -1,28 +1,37 @@
 import React from 'react';
+import StoreContext from '../../StoreContext';
 import { updateNewMessageTextActionCreator, addMessageActionCreator } from '../../../src/redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 
-const DialogsContainer = (props) => {
-
-   const sendingMessageMethods = {
-      messageTextUpdate(text) {
-         debugger;
-         props.store.dispatch(updateNewMessageTextActionCreator(text));
-      },
-      sendMessage() {
-         props.store.dispatch(addMessageActionCreator());
-      }
-   };
-
-   const dialogsData = props.store.getState().messagesPage.dialogsData;
-   const newMessageText = props.store.getState().messagesPage.newMessageText;
+const DialogsContainer = () => {
 
    return (
-      <Dialogs
-         dialogsData={dialogsData}
-         newMessageText={newMessageText}
-         sendingMessageMethods={sendingMessageMethods}
-      />
+      <StoreContext.Consumer>
+         {
+            (store) => {
+               const sendingMessageMethods = {
+                  messageTextUpdate(text) {
+                     debugger;
+                     store.dispatch(updateNewMessageTextActionCreator(text));
+                  },
+                  sendMessage() {
+                     store.dispatch(addMessageActionCreator());
+                  }
+               };
+               const dialogsData = store.getState().messagesPage.dialogsData;
+               const newMessageText = store.getState().messagesPage.newMessageText;
+
+               return (
+                  <Dialogs
+                     dialogsData={dialogsData}
+                     newMessageText={newMessageText}
+                     sendingMessageMethods={sendingMessageMethods}
+                  />
+               );
+            }
+         }
+      </StoreContext.Consumer>
+
    );
 }
 
