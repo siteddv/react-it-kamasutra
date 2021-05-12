@@ -9,6 +9,7 @@ const DialogsContainer = () => {
       <StoreContext.Consumer>
          {
             (store) => {
+
                const sendingMessageMethods = {
                   messageTextUpdate(text) {
                      debugger;
@@ -18,8 +19,10 @@ const DialogsContainer = () => {
                      store.dispatch(addMessageActionCreator());
                   }
                };
-               const dialogsData = store.getState().messagesPage.dialogsData;
-               const newMessageText = store.getState().messagesPage.newMessageText;
+               console.log(store.getState());
+               debugger;
+               const dialogsData = store.getState().dialogsPage.dialogsData;
+               const newMessageText = store.getState().dialogsPage.newMessageText;
 
                return (
                   <Dialogs

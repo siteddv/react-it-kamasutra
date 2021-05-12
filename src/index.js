@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/store';
+import store from './redux/redux-store';
 import StoreContext from "./StoreContext"
 
-const rerenderEntireTree = (store) => {
+const rerenderEntireTree = () => {
    ReactDOM.render(
       <StoreContext.Provider value={store}>
          <React.StrictMode>
-            <App/>
+            <App />
          </React.StrictMode>
       </StoreContext.Provider >,
       document.getElementById('root')
    );
 
 }
-rerenderEntireTree(store);
+rerenderEntireTree();
 
 store.subscribe(rerenderEntireTree);
 

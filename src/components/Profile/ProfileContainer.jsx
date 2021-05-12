@@ -9,6 +9,7 @@ const ProfileContainer = () => {
       <StoreContext.Consumer>
          {
             (store) => {
+
                const addingPostMethods = {
                   updateNewPostText(text) {
                      store.dispatch(updateNewPostTextActionCreator(text));
@@ -17,7 +18,8 @@ const ProfileContainer = () => {
                      store.dispatch(addPostActionCreator());
                   }
                };
-
+               debugger;
+               console.log(store.getState());
                const postsData = store.getState().profilePage.postsData;
                const newPostText = store.getState().profilePage.newPostText;
 
