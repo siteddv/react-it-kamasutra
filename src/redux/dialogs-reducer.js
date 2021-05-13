@@ -43,12 +43,21 @@ const dialogsReducer = (state = initialState, action) => {
                break;
             }
          }
-         state.dialogsData[currentCompanionIndex].messagesData.push(newMessage);
-         state.newMessageText = "";
-         return state;
+         let newState = {
+            ...state,
+            newMessageText: "",
+            dialogsData: [...state.dialogsData],
+         };
+         console.log(newState.dialogsData);
+         debugger;
+         newState.dialogsData[currentCompanionIndex].messagesData.push(newMessage);
+         return newState;
       case UPDATE_NEW_MESSAGE_TEXT:
-         state.newMessageText = action.text;
-         return state;
+         debugger;
+         return {
+            ...state,
+            newMessageText: action.text
+         }
       default:
          return state;
    }
