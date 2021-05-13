@@ -10,8 +10,15 @@ const Messages = (props) => {
       <Route path={"/messages/" + dialog.companionName.toLowerCase()}
          render={() => dialog.messagesData.map(message =>
             <div>
-               <MessageItem text={message.messageText} date={message.dateOfChanging} />
-               <SendMessageArea newMessageText={props.newMessageText} sendingMessageMethods={props.sendingMessageMethods} />
+               <MessageItem
+                  text={message.messageText}
+                  date={message.dateOfChanging}
+               />
+               <SendMessageArea
+                  newMessageText={props.newMessageText}
+                  messageTextUpdate={props.messageTextUpdate}
+                  sendMessage={props.sendMessage}
+               />
             </div>
          )
          }

@@ -9,7 +9,12 @@ const Dialogs = (props) => {
 
       <div className={style.dialogs}>
          <Companions dialogsData={props.dialogsData} />
-         <Messages dialogsData={props.dialogsData} newMessageText={props.newMessageText} dispatch={props.dispatch} sendingMessageMethods={props.sendingMessageMethods} />
+         <Messages
+            dialogsData={props.dialogsData}
+            newMessageText={props.newMessageText}
+            messageTextUpdate={props.messageTextUpdate}
+            sendMessage={props.sendMessage}
+         />
       </div >
    );
 }

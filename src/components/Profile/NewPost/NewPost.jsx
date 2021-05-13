@@ -6,12 +6,12 @@ let newPostElement = React.createRef();
 const NewPost = (props) => {
 
    let addPost = () => {
-      props.addingPostMethods.addPost();
+      props.addPost();
    }
 
    const updateNewPostText = () => {
       const text = newPostElement.current.value;
-      props.addingPostMethods.updateNewPostText(text);
+      props.updateNewPostText(text);
    }
 
 

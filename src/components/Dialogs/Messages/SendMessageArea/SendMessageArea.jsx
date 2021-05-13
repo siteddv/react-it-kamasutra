@@ -4,11 +4,11 @@ import style from './SendMessageArea.module.css';
 const SendMessageArea = (props) => {
    const messageTextUpdate = (e) => {
       const text = e.target.value;
-      props.sendingMessageMethods.messageTextUpdate(text);
+      props.messageTextUpdate(text);
    }
 
    const sendMessage = () => {
-      props.sendingMessageMethods.sendMessage();
+      props.sendMessage();
    }
 
    return (
