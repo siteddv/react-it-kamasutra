@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Navbar from './components/Navbar/Navbar';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import store from './redux/redux-store';
 
 function App() {
   return (
@@ -15,10 +14,10 @@ function App() {
             <Header />
             <Navbar />
             <Route path="/messages"
-              render={() => <DialogsContainer store={store} />}
+              render={() => <DialogsContainer />}
             />
             <Route path="/profile"
-              render={() => <ProfileContainer store={store} />}
+              render={() => <ProfileContainer />}
             />
           </div>
         </div>
