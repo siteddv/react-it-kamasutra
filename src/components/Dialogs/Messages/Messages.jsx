@@ -7,10 +7,11 @@ import SendMessageArea from './SendMessageArea/SendMessageArea';
 const Messages = (props) => {
 
    let messageElements = props.dialogsData.map(dialog =>
-      <Route path={"/messages/" + dialog.companionName.toLowerCase()}
+      <Route path={"/messages/" + dialog.id}
          render={() => dialog.messagesData.map(message =>
             <div>
                <MessageItem
+                  key={message.id}
                   text={message.messageText}
                   date={message.dateOfChanging}
                />

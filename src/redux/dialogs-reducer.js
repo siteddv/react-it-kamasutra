@@ -5,24 +5,27 @@ let initialState = {
    newMessageText: "",
    dialogsData: [
       {
+         id: 1,
          companionName: "Dimitrii",
          messagesData: [
-            { messageText: "Hey!", dateOfChanging: new Date().toDateString() },
-            { messageText: "Bravo!", dateOfChanging: new Date().toDateString() },
+            { id: 1, messageText: "Hey!", dateOfChanging: new Date().toDateString() },
+            { id: 2, messageText: "Bravo!", dateOfChanging: new Date().toDateString() },
          ],
       },
       {
+         id: 2,
          companionName: "Meerim",
          messagesData: [
-            { messageText: "Привет от Мээрим!", dateOfChanging: new Date().toDateString() },
-            { messageText: "Bravo!", dateOfChanging: new Date().toDateString() },
+            { id: 1, messageText: "Привет от Мээрим!", dateOfChanging: new Date().toDateString() },
+            { id: 2, messageText: "Bravo!", dateOfChanging: new Date().toDateString() },
          ],
       },
       {
+         id: 3,
          companionName: "Nastya",
          messagesData: [
-            { messageText: "Привет от Насти!", dateOfChanging: new Date().toDateString() },
-            { messageText: "Bravo!", dateOfChanging: new Date().toDateString() },
+            { id: 1, messageText: "Привет от Насти!", dateOfChanging: new Date().toDateString() },
+            { id: 2, messageText: "Bravo!", dateOfChanging: new Date().toDateString() },
          ],
       },
    ],
@@ -31,29 +34,28 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
    switch (action.type) {
       case ADD_MESSAGE:
+         const currentCompanionIndex = Number(window.location.pathname.slice(window.location.pathname.lastIndexOf('/') + 1));
+         debugger;
+         const currentCompanionMessages = state.dialogsData[currentCompanionIndex - 1].messagesData;
          const newMessage = {
+            id: currentCompanionMessages[currentCompanionMessages.length - 1].id + 1,
             messageText: state.newMessageText,
             dateOfChanging: new Date().toDateString(),
          };
-         const companionName = window.location.pathname.slice(window.location.pathname.lastIndexOf('/') + 1);
-         let currentCompanionIndex;
-         for (let i = 0; i < state.dialogsData.length; ++i) {
-            if (companionName === state.dialogsData[i].companionName.toLowerCase()) {
-               currentCompanionIndex = i;
-               break;
-            }
-         }
-         let newState = {
+         return {
             ...state,
             newMessageText: "",
-            dialogsData: [...state.dialogsData],
+            dialogsData: state.dialogsData.map(user => {
+               if (user.id === currentCompanionIndex) {
+                  return {
+                     ...user,
+                     messagesData: [...user.messagesData, newMessage]
+                  }
+               }
+               return user;
+            })
          };
-         console.log(newState.dialogsData);
-         debugger;
-         newState.dialogsData[currentCompanionIndex].messagesData.push(newMessage);
-         return newState;
       case UPDATE_NEW_MESSAGE_TEXT:
-         debugger;
          return {
             ...state,
             newMessageText: action.text

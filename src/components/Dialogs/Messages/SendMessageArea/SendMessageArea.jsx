@@ -8,7 +8,6 @@ const SendMessageArea = (props) => {
    }
 
    const sendMessage = () => {
-      debugger;
       props.sendMessage();
    }
 

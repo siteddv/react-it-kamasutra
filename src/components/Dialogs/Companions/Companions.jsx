@@ -6,9 +6,8 @@ import style from './Companions.module.css';
 const Companions = (props) => {
    console.log(props);
    let companionElements = props.dialogsData.map(dialog => {
-      console.log(dialog.companionName, "cn");
-      return <NavLink to={"/messages/" + dialog.companionName.toLowerCase()} activeClassName={style.active} >
-         <CompanionItem name={dialog.companionName} />
+      return <NavLink key={dialog.id} to={"/messages/" + dialog.id} activeClassName={style.active} >
+         <CompanionItem key={dialog.id} name={dialog.companionName} />
       </NavLink>;
    }
 

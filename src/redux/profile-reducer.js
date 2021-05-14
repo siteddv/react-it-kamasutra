@@ -4,7 +4,10 @@ const ADD_POST = "ADD-POST";
 let initialState = {
    newPostText: "",
    postsData: [
-      { content: "Hey!" },
+      {
+         id: 1,
+         content: "Hey!"
+      },
    ],
 };
 
@@ -12,6 +15,7 @@ const profileReducer = (state = initialState, action) => {
    switch (action.type) {
       case ADD_POST:
          const newPost = {
+            id: state.postsData[state.postsData.length - 1].id + 1,
             content: state.newPostText,
          };
          return {
