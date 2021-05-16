@@ -1,0 +1,129 @@
+.users {
+   grid-column: span 5;
+   grid-row: span 14;
+   width: 100%;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: repeat(7, 1fr);
+   grid-gap: 10px;
+}
+
+.usersElement {
+   grid-column: span 1;
+   grid-row: span 1;
+   width: 100%;
+   display: grid;
+   grid-template-columns: 1fr 5fr;
+   grid-template-rows: 1fr;
+   grid-gap: 10px;
+}
+
+.avatarFollow {
+   grid-column: span 1;
+   grid-row: span 1;
+   width: 100%;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 4fr 1fr;
+   grid-gap: 10px;
+   position: relative;
+}
+
+.avatar {
+   position: relative;
+   grid-column: span 1;
+   grid-row: span 1;
+   /* transform: translateX(-50%); */
+}
+
+.avatarImg {
+   /* position: absolute; */
+   width: 50%;
+   transform: translateX(50%);
+}
+
+.button {
+   height: 100%;
+
+   color: #fff;
+   font-weight: 700;
+
+   background-color: #14cd68;
+
+   border: 0;
+   cursor: pointer;
+   text-transform: uppercase;
+   transition: background 0.2s linear;
+}
+
+.button:hover {
+   background-color: #10a553;
+}
+
+.followButton {
+   width: 70%;
+   font-size: 15px;
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 7px;
+}
+
+.showMoreButton {
+   display: grid;
+   width: 20%;
+   height: 50%;
+   font-size: 20px;
+   align-items: center;
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 10px;
+}
+
+.info {
+   position: relative;
+   padding: 10px;
+   grid-column: span 1;
+   grid-row: span 1;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1fr;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.info__about {
+   /* position: absolute; */
+   grid-column: span 1;
+   grid-row: span 1;
+   text-align: start;
+}
+
+.fullName {
+   font-size: 25px;
+   font-weight: 700;
+}
+
+.status {
+   color: #333;
+   font-size: 20px;
+   line-height: 2;
+}
+
+.info__location {
+   /* position: absolute; */
+   grid-column: span 1;
+   grid-row: span 1;
+   right: 0;
+   text-align: end;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.country {
+   font-size: 20px;
+   font-weight: 700;
+}
+
+.city {
+   /* font-size: 20px; */
+}
