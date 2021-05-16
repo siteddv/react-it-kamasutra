@@ -3,19 +3,11 @@ import style from './Users.module.css';
 
 
 const Users = (props) => {
-   // let users = [
-   //    { id: 1, photoUrl: "https://webtous.ru/wp-content/uploads/2017/09/round-avatar.png", followed: false, fullName: "Dimitrii", status: "I'm a programmer", location: { city: "Bishkek", country: "Kyrgyzstan" } },
-   //    { id: 2, photoUrl: "https://webtous.ru/wp-content/uploads/2017/09/round-avatar.png", followed: false, fullName: "Nastya", status: "I'm a girl", location: { city: "Prigorodnoe", country: "Russia" } },
-   //    { id: 3, photoUrl: "https://webtous.ru/wp-content/uploads/2017/09/round-avatar.png", followed: true, fullName: "Meerim", status: "I'm Meerim", location: { city: "KRSU", country: "Kyrgyzstan" } },
-   // ];
-   // if (props.users.length === 0) {
-   //    props.setUsers(users);
-   // }
    let usersElements = props.users.map(user => (
       <div className={style.usersElement}>
          <div className={style.avatarFollow}>
             <div className={style.avatar}>
-               <img className={style.avatar} src={user.photoUrl} className={style.avatarImg} alt={""} />
+               <img className={style.avatarImg} src={user.photoUrl} alt={""} />
             </div>
             <button className={`${style.button} ${style.followButton}`} onClick={() => { props.followUnfollowUser(user.id) }}>{user.followed ? "Follow" : "Unfollow"}</button>
          </div>
