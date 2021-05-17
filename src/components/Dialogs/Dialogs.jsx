@@ -3,20 +3,22 @@ import Companions from './Companions/Companions';
 import style from './Dialogs.module.css';
 import Messages from './Messages/Messages';
 
-const Dialogs = (props) => {
+class Dialogs extends React.Component {
 
-   return (
+   render() {
+      return (
+         <div className={style.dialogs}>
+            <Companions dialogsData={this.props.dialogsData} />
+            <Messages
+               dialogsData={this.props.dialogsData}
+               newMessageText={this.props.newMessageText}
+               messageTextUpdate={this.props.messageTextUpdate}
+               sendMessage={this.props.sendMessage}
+            />
+         </div >
+      );
+   }
 
-      <div className={style.dialogs}>
-         <Companions dialogsData={props.dialogsData} />
-         <Messages
-            dialogsData={props.dialogsData}
-            newMessageText={props.newMessageText}
-            messageTextUpdate={props.messageTextUpdate}
-            sendMessage={props.sendMessage}
-         />
-      </div >
-   );
 }
 
 export default Dialogs;
