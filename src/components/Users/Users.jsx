@@ -3,16 +3,25 @@ import style from './Users.module.css';
 import * as axios from 'axios';
 
 
-const Users = (props) => {
-
-   if (props.users.length === 0) {
+class Users extends React.Component {
+   constructor(props) {
+      super(props);
       axios.get("https://social-network.samuraijs.com/api/1.0/users")
          .then(response => {
-            props.setUsers(response.data.items);
+            this.props.setUsers(response.data.items);
          });
    }
 
-   let usersElements = props.users.map(user => (
+   render() {
+      return (
+         <div className={style.users} >
+            { this.usersElements}
+            < button className={`${style.button} ${style.showMoreButton}`}> Show more</ button>
+         </div >
+      );
+   }
+
+   usersElements = this.props.users.map(user => (
       <div className={style.usersElement}>
          <div className={style.avatarFollow}>
             <div className={style.avatar}>
@@ -21,7 +30,7 @@ const Users = (props) => {
                   alt={""}
                />
             </div>
-            <button className={`${style.button} ${style.followButton}`} onClick={() => { props.followUnfollowUser(user.id) }}>{user.followed ? "Follow" : "Unfollow"}</button>
+            <button className={`${style.button} ${style.followButton}`} onClick={() => { this.props.followUnfollowUser(user.id) }}>{user.followed ? "Follow" : "Unfollow"}</button>
          </div>
          <div className={style.info}>
             <div className={style.info__about}>
@@ -35,13 +44,6 @@ const Users = (props) => {
          </div>
       </div>
    ));
-
-   return (
-      <div className={style.users}>
-         {usersElements}
-         <button className={`${style.button} ${style.showMoreButton}`}>Show more</button>
-      </div>
-   );
 }
 
 export default Users;
