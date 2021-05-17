@@ -5,15 +5,20 @@ import Info from './Info/Info';
 import NewPost from './NewPost/NewPost';
 import Feed from './Feed/Feed';
 
-const Profile = (props) => {
-   return (
-      <div className={style.profile}>
-         <CoverPhoto />
-         <Info />
-         <NewPost updateNewPostText={props.updateNewPostText} addPost={props.addPost} newPostText={props.newPostText} />
-         <Feed postsData={props.postsData} />
-      </div>
-   );
+class Profile extends React.Component {
+
+   render() {
+      debugger;
+      return (
+         <div className={style.profile} >
+            <CoverPhoto />
+            <Info />
+            <NewPost updateNewPostText={this.props.updateNewPostText} addPost={this.props.addPost} newPostText={this.props.newPostText} />
+            <Feed postsData={this.props.postsData} />
+         </div>
+      );
+   };
+
 }
 
 export default Profile;
