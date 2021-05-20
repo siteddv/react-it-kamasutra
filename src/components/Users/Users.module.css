@@ -127,3 +127,21 @@
 .city {
    /* font-size: 20px; */
 }
+
+.pagesNumbers {
+   grid-column: span 1;
+   grid-row: span 1;
+   width: 100%;
+   text-align: center;
+}
+
+.pagesNumber {
+   font-size: 20px;
+   margin-right: 20px;
+   cursor: pointer;
+   padding: 2px 5px;
+}
+
+.pagesNumber:hover {
+   background-color: #ccc;
+}

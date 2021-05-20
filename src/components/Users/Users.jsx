@@ -6,22 +6,61 @@ import * as axios from 'axios';
 class Users extends React.Component {
 
    componentDidMount() {
-      axios.get("https://social-network.samuraijs.com/api/1.0/users")
+      debugger;
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
+         .then(response => {
+
+            this.props.setUsers(response.data.items);
+            debugger;
+            this.props.setTotalUsersCount(response.data.totalCount);
+            debugger;
+         });
+      debugger;
+   };
+
+
+   onPostChanged = (pageNumber) => {
+      debugger;
+      this.props.setCurrentPageNumber(pageNumber);
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
          .then(response => {
             this.props.setUsers(response.data.items);
+            debugger;
          });
+      debugger;
    }
 
    render() {
+      debugger;
+      let pagesNumber = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+      let pageNumbersArray = [];
+
+      for (let i = 1; i <= 10; ++i) {
+         pageNumbersArray.push(i);
+      }
+
+      let pageElements = pageNumbersArray.map(pageNumber => (
+
+         <span className={`${style.pagesNumber} ${(this.props.currentPageNumber === style.pageNumber && style.activePagesNumber)}`} onClick={() => this.onPostChanged(pageNumber)}>
+            { pageNumber}
+         </span >
+
+      ));
+
       return (
+
          <div className={style.users} >
-            { this.usersElements}
+            <div className={style.pagesNumbers}>
+               {pageElements}
+            </div>
+            { this.getUsersElements()}
             < button className={`${style.button} ${style.showMoreButton}`}> Show more</ button>
          </div >
       );
    }
 
-   usersElements = this.props.users.map(user => (
+   getUsersElements = () => this.props.users.map(user => (
       <div className={style.usersElement}>
          <div className={style.avatarFollow}>
             <div className={style.avatar}>
