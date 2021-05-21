@@ -1,19 +1,22 @@
-import { followUnfollowActionCreator, setCurrentPageNumberActionCreator, setTotalUsersCountActionCreator, setUsersActionCreator } from '../../redux/users-reducer';
+import { followUnfollowActionCreator, setCurrentPageNumberActionCreator, setTotalUsersCountActionCreator, setUsersActionCreator, toggleIsFetchingActionCreator } from '../../redux/users-reducer';
 import React from 'react';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
 import Users from './Users';
+import Preloader from '../Preloader/Preloader'
 
 class UsersContainer extends React.Component {
 
    componentDidMount() {
       debugger;
+      this.props.toggleIsFetching(true);
       axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
          .then(response => {
             this.props.setUsers(response.data.items);
             debugger;
             this.props.setTotalUsersCount(response.data.totalCount);
             debugger;
+            this.props.toggleIsFetching(false);
          });
       debugger;
    };
@@ -22,9 +25,11 @@ class UsersContainer extends React.Component {
    onPostChanged = (pageNumber) => {
       debugger;
       this.props.setCurrentPageNumber(pageNumber);
+      this.props.toggleIsFetching(true);
       axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPageNumber}&count=${this.props.pageSize}`)
          .then(response => {
             this.props.setUsers(response.data.items);
+            this.props.toggleIsFetching(false);
             debugger;
          });
       debugger;
@@ -32,16 +37,22 @@ class UsersContainer extends React.Component {
 
    render() {
       debugger;
-      return (
-         <Users
-            totalUsersCount={this.props.totalUsersCount}
-            pageSize={this.props.pageSize}
-            currentPageNumber={this.props.currentPageNumber}
-            onPostChanged={this.onPostChanged}
-            users={this.props.users}
-            followUnfollowUser={this.props.followUnfollowUser}
-         />
-      )
+      if (this.props.isFetching) {
+         return (
+            <Preloader />
+         )
+      } else {
+         return (
+            <Users
+               totalUsersCount={this.props.totalUsersCount}
+               pageSize={this.props.pageSize}
+               currentPageNumber={this.props.currentPageNumber}
+               onPostChanged={this.onPostChanged}
+               users={this.props.users}
+               followUnfollowUser={this.props.followUnfollowUser}
+            />
+         )
+      }
    }
 }
 
@@ -50,7 +61,8 @@ let mapStateToProps = (state) => {
       users: state.usersPage.users,
       totalUsersCount: state.usersPage.totalUsersCount,
       pageSize: state.usersPage.pageSize,
-      currentPageNumber: state.usersPage.currentPageNumber
+      currentPageNumber: state.usersPage.currentPageNumber,
+      isFetching: state.usersPage.isFetching
    }
 };
 let mapDispatchToProps = (dispatch) => {
@@ -66,6 +78,9 @@ let mapDispatchToProps = (dispatch) => {
       },
       setCurrentPageNumber: (currentPageNumber) => {
          dispatch(setCurrentPageNumberActionCreator(currentPageNumber));
+      },
+      toggleIsFetching: (isFetching) => {
+         dispatch(toggleIsFetchingActionCreator(isFetching));
       }
    }
 };
