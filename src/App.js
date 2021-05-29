@@ -6,43 +6,25 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import UsersContainer from './components/Users/UsersContainer';
 
-function App() {
+const App = () => {
   return (
-<<<<<<< Updated upstream
-    <BrowserRouter>
-      <div className="App">
-        <div className="container">
-          <div className="app-wrapper">
-            <Header />
-            <Navbar />
-            <Route path="/messages"
-              render={() => <DialogsContainer />}
-            />
-            <Route path="/profile"
-              render={() => <ProfileContainer />}
-            />
-            <Route path="/users"
-              render={() => <UsersContainer />}
-            />
-          </div>
-=======
+    <div className='app-wrapper'>
+      <Header />
+      <Navbar />
+      <div className='app-wrapper-content'>
+        <Route path='/dialogs'
+          render={() => <DialogsContainer />} />
 
-    <div className="App">
-      <div className="container">
-        <div className="app-wrapper">
-          <Header />
-          <Navbar />
-          <Route path="/messages"
-            render={() => <DialogsContainer store={store} />}
-          />
-          <Route path="/profile"
-            render={() => <ProfileContainer store={store} />}
-          />
->>>>>>> Stashed changes
-        </div>
+        <Route path='/profile'
+          render={() => <ProfileContainer />} />
+
+        <Route path='/users'
+          render={() => <UsersContainer />} />
+
+
       </div>
     </div>
-  );
+  )
 }
 
 export default App;
