@@ -7,8 +7,12 @@ import usersReducer from "./users-reducer";
 let reducers = combineReducers({
    dialogsPage: dialogsReducer,
    profilePage: profileReducer,
+<<<<<<< Updated upstream
    sidebar: sidebarReducer,
    usersPage: usersReducer
+=======
+   sidebar: sidebarReducer
+>>>>>>> Stashed changes
 });
 
 let store = createStore(reducers);
