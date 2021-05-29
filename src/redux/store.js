@@ -12,7 +12,7 @@ let store = {
          newPostText: "",
          postsData: [
             { content: "Hey!" },
-         ],
+         ]
       },
       messagesPage: {
          newMessageText: "",
@@ -37,8 +37,8 @@ let store = {
                   { messageText: "Привет от Насти!", dateOfChanging: new Date().toDateString() },
                   { messageText: "Bravo!", dateOfChanging: new Date().toDateString() },
                ],
-            },
-         ],
+            }
+         ]
       },
       sidebar: {
 
